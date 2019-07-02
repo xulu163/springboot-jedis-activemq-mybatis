@@ -30,13 +30,15 @@ spring:
                 max-wait: 10000
                 max-idle: 20
                 min-idle: 8
+    activemq:
+        broker-url: tcp://localhost:61616
 
 ## 日志支持
 logging:
     file: ./log/demo.log
     level:
         com:
-            angrywolves: WARN
+            xulu: WARN
         java:
             sql: INFO
 mybatis: 

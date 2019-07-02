@@ -2,6 +2,7 @@ package com.xulu.demo.controller;
 
 import com.xulu.demo.entity.User;
 import com.xulu.demo.framework.response.QueryResult;
+import com.xulu.demo.service.MqProducerService;
 import com.xulu.demo.service.UserCacheService;
 import com.xulu.demo.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -23,6 +24,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserCacheService userCacheService;
+    @Autowired
+    private MqProducerService mqProducerService;
 
     /**
      * 根据id获取
@@ -108,5 +111,17 @@ public class UserController {
         queryResult.setRows(list);
         queryResult.setTotal(total);
         return queryResult;
+    }
+
+    /**
+     * testmq
+     * @return
+     */
+    @ApiOperation(value = "testmq", notes = "testmq")
+    @RequestMapping(value = "/testmq", method = RequestMethod.GET)
+    public String testmq(){
+        mqProducerService.sendMsg("hello activemq!");
+        mqProducerService.sendMap();
+        return "success";
     }
 }

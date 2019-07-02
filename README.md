@@ -1,1 +1,1 @@
-#springboot + jedis + mybatis
+#springboot + swagger2 + activemq + jedis + mybatis
